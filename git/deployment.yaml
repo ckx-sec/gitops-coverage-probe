@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: probe-web
+  labels:
+    app: probe-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: probe-web
+  template:
+    metadata:
+      labels:
+        app: probe-web
+    spec:
+      containers:
+      - name: web
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
